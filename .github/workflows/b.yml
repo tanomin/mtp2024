@@ -22,3 +22,5 @@ jobs:
           cache: "pnpm"
 
       - run: pnpm i
+
+      - run: pnpm build
