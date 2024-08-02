@@ -33,7 +33,7 @@ jobs:
 
       - run: pnpm i
 
-      - run: mv .env.production .env
+      - run: mv .env.production .env.local
 
       - run: pnpm build
 
