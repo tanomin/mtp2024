@@ -51,5 +51,5 @@ jobs:
           VPS_USER: ${{ secrets.VPS_USER }}
           VPS_HOST: ${{ secrets.VPS_HOST }}
           VPS_APP: ${{ secrets.VPS_APP }}
-          
-        run: rsync -avz --quiet .next/ $VPS_USER@$VPS_HOST:/app/.next/$VPS_APP
+
+        run: rsync -avz --quiet .next/ $VPS_USER@$VPS_HOST:$VPS_APP
