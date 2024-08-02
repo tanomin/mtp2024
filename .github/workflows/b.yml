@@ -36,7 +36,6 @@ jobs:
 
       - run: pnpm build
 
-      - run: tar -zcvf next.tar.gz .next/
 
       - name: Setup SSH key
         run: |
@@ -48,4 +47,4 @@ jobs:
         env:
           VPS_USER: ${{ secrets.VPS_USER }}
           VPS_HOST: ${{ secrets.VPS_HOST }}
-        run: scp next.tar.gz $VPS_USER@$VPS_HOST:/tmp/
+        run: rsync -avz .next/ $VPS_USER@$VPS_HOST:/app/.next/
