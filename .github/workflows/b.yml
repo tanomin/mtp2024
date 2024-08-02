@@ -11,6 +11,8 @@ jobs:
           ref: master
           token: ${{ secrets.REMOTE_REPO_ACCESS_TOKEN }}
 
+
+
       - uses: pnpm/action-setup@v4
         with:
           version: 8
@@ -32,6 +34,8 @@ jobs:
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
 
       - run: pnpm i
+
+      - run: mv .env.production .env
 
       - run: pnpm build
 
