@@ -5,7 +5,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      
       - uses: actions/checkout@v4
         with:
           repository: tanomin/mtphim
@@ -36,6 +35,9 @@ jobs:
 
       - run: pnpm build
 
+      - run: node sc/build.mjs
+
+      - run: rm -rf .next/static
 
       - name: Setup SSH key
         run: |
@@ -48,4 +50,6 @@ jobs:
         env:
           VPS_USER: ${{ secrets.VPS_USER }}
           VPS_HOST: ${{ secrets.VPS_HOST }}
-        run: rsync -avz .next/ $VPS_USER@$VPS_HOST:/app/.next/
+          VPS_APP: ${{ secrets.VPS_APP }}
+          
+        run: rsync -avz --quiet .next/ $VPS_USER@$VPS_HOST:/app/.next/$VPS_APP
